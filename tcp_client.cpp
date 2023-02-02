@@ -23,7 +23,8 @@ int main(int argc, char const *argv[])
 	int client_fd = -1;
 
 	// TODO: Create a TCP socket()
-
+	client_fd = socket(AF_INET, SOCK_STREAM, 0);
+	
 	// Enable reusing address and port
 	if (setsockopt(client_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) { 
 		return -1;
@@ -44,10 +45,26 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
+	if (connect(client_fd, &addrinfo, sizeof(addrinfo) == -1) {
+		std::cout << "Failed to connect to server" << std::endl;
+		return 1;
+	}
+	
 	// TODO: Retreive user input
+	std::cout << "Enter a message to send: << std::endl;
+	string userInput;
+	std::cin >> userInput;
+	
 	// TODO: Send() the user input to the server
+	
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
+	char serverMessage[256];
+	recv(client_fd, &serverMessage, sizeof(serverMessage), 0);
+	serverMessage[255] = '\0';
+	std::cout << "Server Message: " << serverMessage << setd::endl;
+	     
 	// TODO: Close() the socket
+	close(client_fd);
 
 	return 0; 
 } 
