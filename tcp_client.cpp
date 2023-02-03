@@ -5,10 +5,14 @@
 #include <iostream>
 #include <stdlib.h>
 #include <sys/socket.h> 
+#include <sys/types.h>
 #include <netdb.h>
 #include <netinet/in.h> 
 #include <arpa/inet.h>
 #include <unistd.h>
+
+using namespace std;
+
 
 int main(int argc, char const *argv[]) 
 { 
@@ -16,8 +20,8 @@ int main(int argc, char const *argv[])
 	char socket_read_buffer[1024];
 	
 	// TODO: Fill out the server ip and port
-	std::string server_ip = "";
-	std::string server_port = "";
+	std::string server_ip = "172.20.10.13";
+	std::string server_port = "61404";
 
 	int opt = 1;
 	int client_fd = -1;
@@ -45,19 +49,18 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
-	if (connect(client_fd, server_addr->ai_addr, len(server_addr->ai_addr)) < 0) {
+	if (connect(client_fd, server_addr->ai_addr, server_addr->ai_addrlen) < 0) {
 		std::cout << "Failed to connect to server" << std::endl;
 		return 1;
 	}
 	
 	// TODO: Retreive user input
 	std::cout << "Enter a message to send: " << std::endl;
-	char userInput[256];
-	std::cin >> userInput;
-	userInput[255] = '\0';
+	std::cin >> socket_read_buffer;
+	socket_read_buffer[1023] = '\0';
 	
 	// TODO: Send() the user input to the server
-	send(client_fd, userInput, strlen(userInput), 0);
+	send(client_fd, socket_read_buffer, strlen(socket_read_buffer), 0);
 	    
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
 	char serverMessage[256];
