@@ -45,16 +45,16 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
-	if (connect(client_fd, &addrinfo, sizeof(addrinfo) < 0) {
+	if (connect(client_fd,(addrinfo*) &server_addr, sizeof(server_addr)) < 0) {
 		std::cout << "Failed to connect to server" << std::endl;
 		return 1;
 	}
 	
 	// TODO: Retreive user input
 	std::cout << "Enter a message to send: << std::endl;
-	char[256] userInput;
+	char userInput[256];
 	std::cin >> userInput;
-	char[255] = '\0';
+	userInput[255] = '\0';
 	
 	// TODO: Send() the user input to the server
 	send(client_fd, userInput, strlen(userInput), 0);
@@ -63,7 +63,7 @@ int main(int argc, char const *argv[])
 	char serverMessage[256];
 	recv(client_fd, &serverMessage, sizeof(serverMessage), 0);
 	serverMessage[255] = '\0';
-	std::cout << "Server Message: " << serverMessage << setd::endl;
+	std::cout << "Server Message: " << serverMessage << std::endl;
 	     
 	// TODO: Close() the socket
 	close(client_fd);
