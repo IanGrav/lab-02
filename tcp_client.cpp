@@ -31,8 +31,8 @@ int main(int argc, char const *argv[])
 	}
 
 	// Check if the client socket was set up properly
-	if(client_fd == -1){
-		printf("Error- Socket setup failed");
+	if(client_fd < 0){
+		printf("Error- Client socket setup failed");
 		return -1;
 	}
 	
@@ -45,18 +45,20 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
-	if (connect(client_fd, &addrinfo, sizeof(addrinfo) == -1) {
+	if (connect(client_fd, &addrinfo, sizeof(addrinfo) < 0) {
 		std::cout << "Failed to connect to server" << std::endl;
 		return 1;
 	}
 	
 	// TODO: Retreive user input
 	std::cout << "Enter a message to send: << std::endl;
-	string userInput;
+	char[256] userInput;
 	std::cin >> userInput;
+	char[255] = '\0';
 	
 	// TODO: Send() the user input to the server
-	
+	send(client_fd, userInput, strlen(userInput), 0);
+	    
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
 	char serverMessage[256];
 	recv(client_fd, &serverMessage, sizeof(serverMessage), 0);
