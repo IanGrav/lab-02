@@ -80,8 +80,9 @@ int main(int argc, char *argv[])
 	n = read(newsockfd,buffer,255);
         if (n < 0) 
             error("ERROR reading from socket");
-        n = write(newsockfd,"I got your message",18);
         printf("Here is the message: %s\n",buffer);
+        n = write(newsockfd,"I got your message",19);
+        buffer[255] = '\0';
         if (n < 0) 
             error("ERROR writing to socket");
         close(newsockfd);
