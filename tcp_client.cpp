@@ -45,7 +45,7 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
-	if (connect(client_fd,(addrinfo*) &server_addr, sizeof(server_addr)) < 0) {
+	if (connect(client_fd, server_addr->ai_addr, len(server_addr->ai_addr)) < 0) {
 		std::cout << "Failed to connect to server" << std::endl;
 		return 1;
 	}
