@@ -51,7 +51,7 @@ int main(int argc, char const *argv[])
 	}
 	
 	// TODO: Retreive user input
-	std::cout << "Enter a message to send: << std::endl;
+	std::cout << "Enter a message to send: " << std::endl;
 	char userInput[256];
 	std::cin >> userInput;
 	userInput[255] = '\0';
