@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 	
 	// TODO: Fill out the server ip and port
 	std::string server_ip = "172.20.10.13";
-	std::string server_port = "61404";
+	std::string server_port = "120355";
 
 	int opt = 1;
 	int client_fd = -1;
@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
 	
 	// TODO: Retreive user input
 	std::cout << "Enter a message to send: " << std::endl;
-	std::cin >> socket_read_buffer;
+	std::cin.getline(socket_read_buffer, 1023);
 	socket_read_buffer[1023] = '\0';
 	
 	// TODO: Send() the user input to the server
