@@ -18,17 +18,28 @@ void error(const char *msg)
 int main(int argc, char *argv[])
 {
     /* 1. What is argc and *argv[]?
-     *
+     * 
+     argc and argv are an int and a char* array respectfully, relating to the arguemnts entered with the executable call. 
+     argc is the number of arguments supplied, and argv is an array of char*s to each argument.
      */
     int sockfd, newsockfd, portno;
     /* 2. What is a UNIX file descriptor and file descriptor table?
      *
+     A file descriptor is a positive integer used to identify an open file.
+     A file descriptor table is a table stored in the kernel listing the file descriptors of open files, which processes use to manage those files.
      */
     socklen_t clilen;
 
     struct sockaddr_in serv_addr, cli_addr;
     /* 3. What is a struct? What's the structure of sockaddr_in?
      *
+     A struct is a data structure, or in other words a new data type created by the programmer which groups variables of different existing data types
+     in a specific order for the programmer's later use.
+     
+     sockaddr_in is a struct which represents an internet socket adrress. It contains a short called sin_family which specifies the adress family, 
+     an unisgned short called sin_port which holds the port number, two structs in_addr and sin_addr which represent the IP adress, 
+     and a char array sin_zero which is used to ensure that the sockaddr_in structure has the same size as the struck sockaddr, 
+     which is a more generic socket address structure (so that they can be used interchangably).
      */
     
     int n;
@@ -40,6 +51,12 @@ int main(int argc, char *argv[])
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     /* 4. What are the input parameters and return value of socket()
      *
+     socket() takes three input parameters: \
+     the first is an int "domain" which holds the adress family od the socket (such as AF_INET for internet adresses)
+     the second is an int "type" which holds the type of the socket, for example SOCK_STREAM for a stream-oriented connection or
+     SOCK_DGRAM for a connectionless communication
+     the third is an int "protocol" which holds the protocol to be used, such as "IPPROTO_TCP" for TCP, "IPPROTO_UDP" for UDP,
+     or 0 for the default protocol based on the first two input parameters
      */
     
     if (sockfd < 0) 
