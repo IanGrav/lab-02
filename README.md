@@ -52,7 +52,7 @@ QC.1 - QC.7)
 	*
 	A struct is a data structure, or in other words a new data type created by the programmer which groups variables of different 
 	existing data types in a specific order/structure for the programmer's later use.
-	sockaddr_in is a struct which represents an internet socket adrress. It contains a short called sin_family which specifies the address family, 
+	sockaddr_in is a struct which represents an internet socket address. It contains a short called sin_family which specifies the address family, 
 	an unisgned short called sin_port which holds the port number, two structs in_addr and sin_addr which represent the IP adress, 
 	and a char array sin_zero which is used to ensure that the sockaddr_in structure has the same size as the struct sockaddr, 
 	which is a more generic socket address structure (so that they can be used interchangably).
