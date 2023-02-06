@@ -85,19 +85,20 @@ QC.1 - QC.7)
 
 /* 6.  Why use while(1)? Based on the code below, what problems might occur if there are multiple simultaneous connections to handle?
         *
-	A while loop is used here so that the server continuously listens for incomming connections; 
-	it will accept and process incoming connections one by one
-	If there are multiple connections to handle, the server might not handle all of them efficiently, 
-	so there might be delays or dropped connections.
+	A while loop is used here so that the server continuously listens for incoming connections; 
+	it will accept and process incoming connections one by one.
+	If there are multiple connections to handle, the server might not handle all of them efficiently enough,
+	because it will have to accept and complete each one before accepting the next,
+	so there might be connection delays or even connection drops.
 */
 
 /* 7. Research how the command fork() works. How can it be applied here to better handle multiple connections?
 	* 
-	The fork() command duplicates the calling process to create a new child process. It returns 0 in the child process, and the process
-	ID of the child process in the parent (calling) process.
+	The fork() command duplicates its calling process to create a new child process. It returns 0 in the child process, and the process
+	ID of the child process in its parent (calling) process.
 	The fork() command can be applied here by being used to create a child process for for every incoming connection request,
 	so that the parent function accept() can continue accepting incoming connections without having to wait for the previous
-	connections to be completed, because each connection will be handled in its own child process.
+	connections to be completed, because each connection will be handled in its own child process rather than in the accept() process.
 */
 
 /* This program makes several system calls such as 'bind', and 'listen.' What exactly is a system call?
