@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
      
      sockaddr_in is a struct which represents an internet socket adrress. It contains a short called sin_family which specifies the adress family, 
      an unisgned short called sin_port which holds the port number, two structs in_addr and sin_addr which represent the IP adress, 
-     and a char array sin_zero which is used to ensure that the sockaddr_in structure has the same size as the struck sockaddr, 
+     and a char array sin_zero which is used to ensure that the sockaddr_in structure has the same size as the struct sockaddr, 
      which is a more generic socket address structure (so that they can be used interchangably).
      */
     
@@ -51,8 +51,8 @@ int main(int argc, char *argv[])
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     /* 4. What are the input parameters and return value of socket()
      *
-     socket() takes three input parameters: \
-     the first is an int "domain" which holds the adress family od the socket (such as AF_INET for internet adresses)
+     socket() takes three input parameters:
+     the first is an int "domain" which holds the adress family of the socket (such as AF_INET for internet adresses)
      the second is an int "type" which holds the type of the socket, for example SOCK_STREAM for a stream-oriented connection or
      SOCK_DGRAM for a connectionless communication
      the third is an int "protocol" which holds the protocol to be used, such as "IPPROTO_TCP" for TCP, "IPPROTO_UDP" for UDP,
@@ -72,6 +72,11 @@ int main(int argc, char *argv[])
              error("ERROR on binding");
     /* 5. What are the input parameters of bind() and listen()?
      *
+     bind() takes three input parameters:
+     the first, an int "sockfd", holds the file descriptor of the socket which will be binded to a local adress
+     the second, an addr*, is a pointer to a sockaddr struct which holds the local adress to be binded to. In the case of
+     internet sockets, the sockaddr struct will be of the sockadr_in type
+     the third input parameter is the size of the sockaddr structure in bytes, held in an unsigned integer type "socklen_t"
      */
     
     listen(sockfd,5);
