@@ -45,7 +45,6 @@ QC.1 - QC.7)
 	*
 	A struct is a data structure, or in other words a new data type created by the programmer which groups variables of different existing data types
 	in a specific order for the programmer's later use.
-	
 	sockaddr_in is a struct which represents an internet socket adrress. It contains a short called sin_family which specifies the adress family, 
 	an unisgned short called sin_port which holds the port number, two structs in_addr and sin_addr which represent the IP adress, 
 	and a char array sin_zero which is used to ensure that the sockaddr_in structure has the same size as the struct sockaddr, 
@@ -60,7 +59,6 @@ QC.1 - QC.7)
 	SOCK_DGRAM for a connectionless communication.
 	The third is an int "protocol" which holds the protocol to be used, such as "IPPROTO_TCP" for TCP, "IPPROTO_UDP" for UDP,
 	or 0 for the default protocol based on the first two input parameters.
-	
 	The return value of the socket() function is an integer which holds the file descriptor for the newly created socket 
 	(which is a positive number), or a negative number if there was an error creating the socket.
 */
@@ -72,7 +70,6 @@ QC.1 - QC.7)
 	The second, an addr*, is a pointer to a sockaddr struct which holds the local adress to be binded to. In the case of
 	internet sockets, the sockaddr struct will be of the sockadr_in type.
 	The third input parameter is the size of the sockaddr structure in bytes, held in an unsigned integer type "socklen_t".
-	
 	listen() takes two input parameters:
 	The first is an int "sockfd" which holds the file descriptor of the socket to be listened to.
 	The second is an int "backlog" which indicates highest number of pending connections that can be queued to
