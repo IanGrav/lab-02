@@ -52,11 +52,14 @@ int main(int argc, char *argv[])
     /* 4. What are the input parameters and return value of socket()
      *
      socket() takes three input parameters:
-     the first is an int "domain" which holds the adress family of the socket (such as AF_INET for internet adresses)
-     the second is an int "type" which holds the type of the socket, for example SOCK_STREAM for a stream-oriented connection or
-     SOCK_DGRAM for a connectionless communication
-     the third is an int "protocol" which holds the protocol to be used, such as "IPPROTO_TCP" for TCP, "IPPROTO_UDP" for UDP,
-     or 0 for the default protocol based on the first two input parameters
+     The first is an int "domain" which holds the adress family of the socket (such as AF_INET for an IPv4 internet adress).
+     The second is an int "type" which holds the type of the socket, for example SOCK_STREAM for a stream-oriented connection or
+     SOCK_DGRAM for a connectionless communication.
+     The third is an int "protocol" which holds the protocol to be used, such as "IPPROTO_TCP" for TCP, "IPPROTO_UDP" for UDP,
+     or 0 for the default protocol based on the first two input parameters.
+     
+     The return value of the socket() function is an integer which holds the file descriptor for the newly created socket 
+     (which is a positive number), or a negative number if there was an error creating the socket.
      */
     
     if (sockfd < 0) 
@@ -73,10 +76,15 @@ int main(int argc, char *argv[])
     /* 5. What are the input parameters of bind() and listen()?
      *
      bind() takes three input parameters:
-     the first, an int "sockfd", holds the file descriptor of the socket which will be binded to a local adress
-     the second, an addr*, is a pointer to a sockaddr struct which holds the local adress to be binded to. In the case of
-     internet sockets, the sockaddr struct will be of the sockadr_in type
-     the third input parameter is the size of the sockaddr structure in bytes, held in an unsigned integer type "socklen_t"
+     The first, an int "sockfd", holds the file descriptor of the socket which will be binded to a local adress.
+     The second, an addr*, is a pointer to a sockaddr struct which holds the local adress to be binded to. In the case of
+     internet sockets, the sockaddr struct will be of the sockadr_in type.
+     The third input parameter is the size of the sockaddr structure in bytes, held in an unsigned integer type "socklen_t".
+     
+     listen() takes two input parameters:
+     The first is an int "sockfd" which holds the file descriptor of the socket to be listened to.
+     The second is an int "backlog" which indicates highest number of pending connections that can be queued to
+     be accepted by the accept() function.
      */
     
     listen(sockfd,5);
@@ -97,7 +105,11 @@ int main(int argc, char *argv[])
                     &clilen);
 	/* 7. Research how the command fork() works. How can it be applied here to better handle multiple connections?
          * 
-	 the fork() command 
+	 The fork() command duplicates the calling process to create a new child process. It returns 0 in the child process, and the process
+	 ID of the child process in the parent (calling) process.
+	 The fork() command can be applied here by being used to create a child process for for every incoming connection request,
+	 so that the parent function accept() can continue accepting incoming connections without having to wait for the previous
+	 connections to be completed, because each connection will be handled in its own child process.
          */
         
 	if (newsockfd < 0) 
@@ -120,4 +132,7 @@ int main(int argc, char *argv[])
   
 /* This program makes several system calls such as 'bind', and 'listen.' What exactly is a system call?
  *
+ A system call is a call made from a user program to the operating system to complete a certain task. The OS then completes that task
+ and returns the result of said task to the user program. 
+ Basically, system calls interface between user programs and the OS so that users can make use of the OS and the capabilities it provides.
  */
