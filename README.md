@@ -14,7 +14,9 @@ environment? Why did this occur?
 
 	Answer for Question 1: 
 	Only around %50 of the messages were sent (actually, it was 4/10), so the reliability of the connection 
-	was affected essentially 1:1 with the imposed loss.
+	was affected essentially 1:1 with the imposed loss. This is because the UDP protocol does not have any mechanisms
+	in place to detect whether packets were lost and retransmit them, so if packets are lost in transmission the receiving end
+	simply doesn't recieve them.
 
 Question 2: How did the reliability of TCP change? Why did this occur?
 
