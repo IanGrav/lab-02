@@ -28,4 +28,11 @@ The speed of the TCP response was slower with the imposed %50 loss. This is like
 
 QC.1 - QC.7)
 
+/* 1. What is argc and *argv[]?
+     * 
+     argc and argv are an int and a char* array respectfully, relating to the arguemnts entered with the executable call. 
+     argc is the number of arguments supplied, and argv is an array of char*s to each argument.
+*/
+
+
 
