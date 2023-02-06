@@ -13,7 +13,8 @@ Question 1: How did the reliability of UDP change when you added 50% loss to you
 environment? Why did this occur?
 
 	Answer for Question 1: 
-	Only around %50 of the messages were sent (actually, it was 4/10), so the reliability of the connection was affected essentially 1:1 with the imposed loss.
+	Only around %50 of the messages were sent (actually, it was 4/10), so the reliability of the connection 
+	was affected essentially 1:1 with the imposed loss.
 
 Question 2: How did the reliability of TCP change? Why did this occur?
 
@@ -24,8 +25,9 @@ Question 2: How did the reliability of TCP change? Why did this occur?
 Question 3: How did the speed of the TCP response change? Why might this happen?
 
 	Answer for Question 3: 
-	The speed of the TCP response was slower with the imposed %50 loss. This is likely because the network has to work to establish which packets were 
-	lost (not delivered) and to retransmit them, which in itself likely takes just as long as sending the original lost packets.
+	The speed of the TCP response was slower with the imposed %50 loss. This is likely because the network has to work 
+	to establish which packets were lost (not delivered) and to retransmit them, which in itself likely takes just as 
+	long as sending the original lost packets.
 
 
 
@@ -40,13 +42,14 @@ QC.1 - QC.7)
 /* 2. What is a UNIX file descriptor and file descriptor table?
 	*
 	A file descriptor is a positive integer used to identify an open file.
-	A file descriptor table is a table stored in the Linux kernel listing the file descriptors of open files, which processes use to manage those files.
+	A file descriptor table is a table stored in the Linux kernel listing the file descriptors of open files, 
+	which processes use to manage those files.
 */
 
 /* 3. What is a struct? What's the structure of sockaddr_in?
 	*
-	A struct is a data structure, or in other words a new data type created by the programmer which groups variables of different existing data types
-	in a specific order/structure for the programmer's later use.
+	A struct is a data structure, or in other words a new data type created by the programmer which groups variables of different 
+	existing data types in a specific order/structure for the programmer's later use.
 	sockaddr_in is a struct which represents an internet socket adrress. It contains a short called sin_family which specifies the address family, 
 	an unisgned short called sin_port which holds the port number, two structs in_addr and sin_addr which represent the IP adress, 
 	and a char array sin_zero which is used to ensure that the sockaddr_in structure has the same size as the struct sockaddr, 
