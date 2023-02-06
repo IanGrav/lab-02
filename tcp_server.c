@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     /* 1. What is argc and *argv[]?
      * 
      argc and argv are an int and a char* array respectfully, relating to the arguemnts entered with the executable call. 
-     argc is the number of arguments supplied, and argv is an array of char*s to each argument.
+     argc is the number of arguments supplied, and argv is an array of char*s which point to the strings holding each input argument.
      */
     int sockfd, newsockfd, portno;
     /* 2. What is a UNIX file descriptor and file descriptor table?
