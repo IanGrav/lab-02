@@ -76,7 +76,7 @@ QC.1 - QC.7)
 	The first, an int "sockfd", holds the file descriptor of the socket which will be binded to a local address.
 	The second, an addr*, is a pointer to a sockaddr struct which holds the local address to be binded to. In the case of
 	internet sockets, the sockaddr struct will be of the sockadr_in type.
-	The third input parameter is the size of the sockaddr structure in bytes, held in an unsigned integer type "socklen_t".
+	The third input parameter is the size of the sockaddr struct in bytes, held in an unsigned integer type "socklen_t".
 	listen() takes two input parameters:
 	The first is an int "sockfd" which holds the file descriptor of the socket to be listened to.
 	The second is an int "backlog" which indicates highest number of pending connections that can be queued to
