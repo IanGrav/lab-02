@@ -73,8 +73,8 @@ QC.1 - QC.7)
 /* 5. What are the input parameters of bind() and listen()?
 	*
 	bind() takes three input parameters:
-	The first, an int "sockfd", holds the file descriptor of the socket which will be binded to a local adress.
-	The second, an addr*, is a pointer to a sockaddr struct which holds the local adress to be binded to. In the case of
+	The first, an int "sockfd", holds the file descriptor of the socket which will be binded to a local address.
+	The second, an addr*, is a pointer to a sockaddr struct which holds the local address to be binded to. In the case of
 	internet sockets, the sockaddr struct will be of the sockadr_in type.
 	The third input parameter is the size of the sockaddr structure in bytes, held in an unsigned integer type "socklen_t".
 	listen() takes two input parameters:
