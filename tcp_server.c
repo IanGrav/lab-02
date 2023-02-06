@@ -85,6 +85,10 @@ int main(int argc, char *argv[])
     while(1) {
         /* 6.  Why use while(1)? Based on the code below, what problems might occur if there are multiple simultaneous connections to handle?
         *
+	A while loop is used here so that the server continuously listens for incomming connections; 
+	it will accept and process incoming connections one by one
+	If there are multiple connections to handle, the server might not handle all of them efficiently, 
+	so there might be delays or dropped connections.
         */
         
 	char buffer[256];
@@ -93,6 +97,7 @@ int main(int argc, char *argv[])
                     &clilen);
 	/* 7. Research how the command fork() works. How can it be applied here to better handle multiple connections?
          * 
+	 the fork() command 
          */
         
 	if (newsockfd < 0) 
